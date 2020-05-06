@@ -125,3 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL = 'profiles_api.UserProfile'
+# The Above statement helps in using Authentication User Models As the UserProfile Model created in models.py
+# Overwritten has been done above .
