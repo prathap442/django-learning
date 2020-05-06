@@ -174,4 +174,18 @@ Running migrations:
 
 ```
 
-python manage.py createsuperuser
+For the sake of creating the superuser i have did something of this sort
+```
+  $ python manage.py createsuperuser
+```
+
+
+For the sake of the enabling the django adming for the user profile model we do the following thing
+
+
+in admin.py
+```
+from django.contrib import
+from profiles_api import models
+admin.site.register(models.UserProfile)
+```
