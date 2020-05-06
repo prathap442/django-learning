@@ -11,7 +11,7 @@ class UserProfileManager(BaseUserManager):
         if not email:
            raise ValueError("Email Cannot be blank")
         else:
-            email = normalize_email(email)
+            email = self.normalize_email(email)
             # now we will create a new model object using 
             user = self.model(email=email,name=name)
             # for setting the password for the user object that is being created above
@@ -22,7 +22,7 @@ class UserProfileManager(BaseUserManager):
             user.save(using=self._db)
             return user
 
-    def create_super_user(self,email,name,password):
+    def create_superuser(self,email,name,password):
         """create and save the new super user with the following details"""
         user = self.create_user(email, name, password)
         user.is_staff = True
