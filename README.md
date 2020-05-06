@@ -1,3 +1,18 @@
+Once the Vagrant environment is being setted up by installing the vagrant and checking for the version we have
+
+```
+$ vagrant init 
+```
+
+By doing the above command we have the Vagrantfile being created and the files are as follows .
+
+```
+$ ls
+Vagrantfile 
+```
+
+and then configuration is being placed in the Vagrantfile as shown .'
+```
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -37,3 +52,20 @@ Vagrant.configure("2") do |config|
   SHELL
 
 end
+```
+
+and then the following things are done on the localMachine
+```
+$ vagrant up
+```
+
+The above command does the process of initiating the box of the vagrant by pulling the ubuntu/bionic-64 image and setting up the environment as shown in the Vagrant file.
+```
+sudo pip install virtualenvwrapper
+if ! grep -q VIRTUALENV_ALREADY_ADDED /home/ubuntu/.bashrc; then
+    echo "# VIRTUALENV_ALREADY_ADDED" >> /home/ubuntu/.bashrc
+    echo "WORKON_HOME=~/.virtualenvs" >> /home/ubuntu/.bashrc
+    echo "PROJECT_HOME=/vagrant" >> /home/ubuntu/.bashrc
+    echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/ubuntu/.bashrc
+fi
+```
