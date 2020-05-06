@@ -69,3 +69,65 @@ if ! grep -q VIRTUALENV_ALREADY_ADDED /home/ubuntu/.bashrc; then
     echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/ubuntu/.bashrc
 fi
 ```
+
+
+```
+(env) vagrant@ubuntu-xenial:/vagrant$ pip install -r requirements.txt
+Collecting django==2.2
+  Downloading Django-2.2-py3-none-any.whl (7.4 MB)
+     |████████████████████████████████| 7.4 MB 1.3 MB/s 
+Collecting djangorestframework==3.9.2
+  Downloading djangorestframework-3.9.2-py2.py3-none-any.whl (911 kB)
+     |████████████████████████████████| 911 kB 1.6 MB/s 
+Collecting pytz
+  Downloading pytz-2020.1-py2.py3-none-any.whl (510 kB)
+     |████████████████████████████████| 510 kB 1.2 MB/s 
+Collecting sqlparse
+  Downloading sqlparse-0.3.1-py2.py3-none-any.whl (40 kB)
+     |████████████████████████████████| 40 kB 1.7 MB/s 
+Installing collected packages: pytz, sqlparse, django, djangorestframework
+Successfully installed django-2.2 djangorestframework-3.9.2 pytz-2020.1 sqlparse-0.3.1
+
+```
+
+
+Now we will try to setup and create a new project in this folder 
+# Creating a new project
+```
+  $ django-admin startproject profiles_project .
+```
+  - The anove is the command that is used to create a new project under the current directory
+
+```
+  $ python3 manage.py startapp profiles_api
+```
+  - The above command is used to setup a new app directory under the current prjoect and then 
+  structure of the project would be as follows .
+
+  ```
+    .
+    ├── manage.py
+    ├── profiles_api
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── __init__.py
+    │   ├── migrations
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   └── views.py
+    ├── profiles_project
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   │   ├── __init__.cpython-35.pyc
+    │   │   └── settings.cpython-35.pyc
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── README.md
+    ├── requirements.txt
+    ├── ubuntu-xenial-16.04-cloudimg-console.log
+    └── Vagrantfile
+  ```
+
+
