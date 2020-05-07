@@ -189,3 +189,53 @@ from django.contrib import
 from profiles_api import models
 admin.site.register(models.UserProfile)
 ```
+
+
+### Interesting things on routes
+
+> How have i built the routes
+
+Unlike the Rails i have to map the urls to the respect views over here and the interesting thing is that in the profiles_api/views.py i have something of this sort
+
+profiles_api/views.py
+```
+  from rest_framework.views import APIView
+  from rest_framework.response import Response
+  #and then wrote some code
+  class HelloApiView(APIView):
+    """Test the API View"""
+
+    def get(self, request, format=None):
+        """Returns the list of the APIView features"""
+        an_api_view = [
+          "Maps the HTTP Verbs as the functions that is get, post, put, patch(partial update), delete",
+          "It is similar to the django views",
+          "Gives you the most control over your application",
+          "Is mapped manually to URLs"]
+        # here we utlise the Response object that whic we have got from the Response definition if in the response.py from rest_framework
+        return Response({"message": "Hello","an_api_view": an_api_view})
+```
+
+create a file in the profiles_api as urls.py
+```
+
+from django.urls import path
+
+from profiles_api import views
+
+
+urlpatterns = [
+    path('hello-view/', views.HelloApiView.as_view())
+```
+
+
+and in the profile_project/urls.py we have
+```
+from django.urls import path, include
+from django.contrib import admin
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('profiles_api.urls'))
+]
+```
