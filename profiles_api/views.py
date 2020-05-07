@@ -33,3 +33,14 @@ class HelloApiView(APIView):
                 }
             )
 
+    def put(self,request,pk="None"):
+        """Updating only one record completely not partially"""
+        return Response({"message": "Completely Updated a Record"})
+
+    def patch(self,request,pk="None"):
+        """Updating a specific field in a record"""
+        return Response({"message": "Updated only certain fields in a record"})
+
+    def delete(self, request,pk="None"):
+        """Deleting a single record"""
+        return Response({"message": "Deleting only one record."})
