@@ -14,6 +14,7 @@ class UserProfileManager(BaseUserManager):
             email = self.normalize_email(email)
             # now we will create a new model object using 
             user = self.model(email=email,name=name)
+            # the password that we get here might be hashed and this method is being called in the create function of the serializer
             # for setting the password for the user object that is being created above
             user.set_password(password)
             # set_password is a method that is being provided by inherited parent class BaseUserManager
