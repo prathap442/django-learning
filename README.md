@@ -239,3 +239,24 @@ urlpatterns = [
     path('api/', include('profiles_api.urls'))
 ]
 ```
+
+
+For the sake of the Login API View we have the following things 
+being done
+at first in the views.py 
+
+```
+  from rest_framework.authtoken.views import ObtainAuthToken
+  # this will be used for the sake of the tokenAuthentication usage
+  from rest_framework.authentication import TokenAuthentication
+  
+  class UserLoginView(ObtainAuthToken):
+      renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+```
+
+
+ModHeader is the browser extension that we have used unlike the postman usage we have used it and to enable the token based authentication for this 
+we click on the extension and then we add the field called as
+
+Authorization
+and the value for this would be "Token ed36e9bd9c6e5be05914ff050f7a24177078bf36"
